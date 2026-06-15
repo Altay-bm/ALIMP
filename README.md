@@ -111,27 +111,47 @@ uvicorn main:app --reload --host 127.0.0.1 --port 8000
 
 Use Case (Mermaid)
 ```mermaid
-%%{init: {'theme':'default'}}%%
-usecaseDiagram
-  actor Manager
-  actor Engineer
-  actor Admin
+flowchart LR
+  subgraph Actors
+    A_Manager(["Менеджер"])
+    A_Engineer(["Инженер"])
+    A_Admin(["Администратор"])
+  end
 
-  Manager --> (Войти в систему)
-  Manager --> (Создать заявку)
-  Manager --> (Закрыть заявку)
-  Engineer --> (Взять заявку в работу)
-  Engineer --> (Перевести в статус "Выполнено")
-  Engineer --> (Добавить комментарий)
-  Manager --> (Просмотреть список заявок)
-  Engineer --> (Просмотреть список заявок)
-  Manager --> (Просмотреть историю заявки)
-  Engineer --> (Просмотреть историю заявки)
-  Admin --> (Управлять сотрудниками)
-  Admin --> (Сменить пароль сотруднику)
-  Admin --> (Удалить сотрудника)
+  subgraph UseCases [Use Cases]
+    UC_Login(["Войти в систему"])
+    UC_Create(["Создать заявку"])
+    UC_Close(["Закрыть заявку"])
+    UC_Take(["Взять заявку в работу"])
+    UC_Finish(["Перевести в статус \"Выполнено\""])
+    UC_Comment(["Добавить комментарий"])
+    UC_List(["Просмотреть список заявок"])
+    UC_History(["Просмотреть историю заявки"])
+    UC_AdminMngr(["Управлять сотрудниками"])
+    UC_ResetPwd(["Сменить пароль сотруднику"])
+    UC_DeleteUser(["Удалить сотрудника"])
+  end
 
-  (Создать заявку) .> (Войти в систему) : extends
-  (Закрыть заявку) .> (Войти в систему) : extends
-  (Взять заявку в работу) .> (Войти в систему) : extends
+  A_Manager --> UC_Login
+  A_Manager --> UC_Create
+  A_Manager --> UC_Close
+  A_Manager --> UC_List
+  A_Manager --> UC_History
+
+  A_Engineer --> UC_Login
+  A_Engineer --> UC_Take
+  A_Engineer --> UC_Finish
+  A_Engineer --> UC_Comment
+  A_Engineer --> UC_List
+  A_Engineer --> UC_History
+
+  A_Admin --> UC_Login
+  A_Admin --> UC_AdminMngr
+  A_Admin --> UC_ResetPwd
+  A_Admin --> UC_DeleteUser
+
+  %% extends (dashed)
+  UC_Create -.-> UC_Login
+  UC_Close  -.-> UC_Login
+  UC_Take   -.-> UC_Login
 ```
