@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Список заявок</h2>
+  <div class="filters">
+    <form method="get" action="/requests">
+      <select name="status">
+        <option value="">Все статусы</option>
+        {% for s in statuses %}
+          <option value="{{ s }}">{{ s }}</option>
+        {% endfor %}
+      </select>
+      <input name="q" placeholder="Номер заявки">
+      <input name="client" placeholder="Клиент">
+      <button type="submit">Фильтр</button>
+    </form>
+  </div>
+  {% if user and user.role == 'manager' %}
+    <p><a href="/requests/create">Создать заявку</a></p>
+  {% endif %}
+  <table>
+    <tr><th>Номер</th><th>Клиент</th><th>Оборудование</th><th>Статус</th><th>Дата</th></tr>
+    {% for it in items %}
+      <tr>
+        <td><a href="/requests/{{ it.id }}">{{ it.number }}</a></td>
+        <td>{{ it.client_name }}</td>
+        <td>{{ it.equipment_type }}</td>
+        <td>{{ it.status }}</td>
+        <td>{{ it.created_at.strftime('%Y-%m-%d') }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

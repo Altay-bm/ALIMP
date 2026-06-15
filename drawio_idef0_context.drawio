@@ -1,0 +1,41 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Context IDEF0">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="a1" value="Управление заявками на оборудование РЗА" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#1A73E8;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="120" width="480" height="200" as="geometry"/>
+        </mxCell>
+        <!-- Input (left) -->
+        <mxCell id="in1" value="Заявка от клиента" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="20" y="180" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;" edge="1" parent="1" source="in1" target="a1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- Output (right) -->
+        <mxCell id="out1" value="Закрытая заявка" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="680" y="180" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;" edge="1" parent="1" source="a1" target="out1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- Controls (top) -->
+        <mxCell id="ctl1" value="Правила работы\nПрайс-лист\nSLA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7E6;strokeColor=#F59E0B;" vertex="1" parent="1">
+          <mxGeometry x="300" y="40" width="260" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=none;" edge="1" parent="1" source="ctl1" target="a1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- Mechanisms (bottom) -->
+        <mxCell id="m1" value="Менеджер\nИнженер\nИнформационная система" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6FFFA;strokeColor=#059669;" vertex="1" parent="1">
+          <mxGeometry x="280" y="340" width="300" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=none;" edge="1" parent="1" source="m1" target="a1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

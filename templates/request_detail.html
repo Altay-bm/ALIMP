@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Заявка {{ item.number }}</h2>
+  <div class="card">
+    <div class="form-row"><strong>Клиент:</strong> <span style="margin-left:8px">{{ item.client_name }} {% if item.client_contact %}({{ item.client_contact }}){% endif %}</span></div>
+    <div class="form-row"><strong>Телефон / Email:</strong> <span style="margin-left:8px">{{ item.client_phone }} / {{ item.client_email }}</span></div>
+    <div class="form-row"><strong>Оборудование:</strong> <span style="margin-left:8px">{{ item.equipment_type }} — {{ item.equipment_params }} (Кол-во: {{ item.quantity }})</span></div>
+    <div class="form-row"><strong>Статус:</strong> <span style="margin-left:8px">{{ item.status }}</span></div>
+    <div class="form-row"><strong>Стоимость:</strong> <span style="margin-left:8px">{{ item.price or '---' }}</span></div>
+    <div class="form-row"><strong>Создал:</strong> <span style="margin-left:8px">{{ item.created_by.name }}</span> <strong style="margin-left:16px">Назначен:</strong> <span style="margin-left:8px">{{ item.assigned_to.name if item.assigned_to else '—' }}</span></div>
+  </div>
+
+  {% if user and user.role == 'manager' and item.status != 'Отгружена' %}
+    <h3>Редактировать</h3>
+    <div class="card">
+      <form class="form-grid" method="post" action="/requests/{{ item.id }}/edit">
+        <div class="form-row"><label class="form-label">Клиент</label><input class="form-control" name="client_name" value="{{ item.client_name }}" required></div>
+        <div class="form-row"><label class="form-label">Контакт</label><input class="form-control" name="client_contact" value="{{ item.client_contact }}"></div>
+        <div class="form-row"><label class="form-label">Телефон</label><input class="form-control" name="client_phone" value="{{ item.client_phone }}"></div>
+        <div class="form-row"><label class="form-label">Email</label><input class="form-control" name="client_email" value="{{ item.client_email }}"></div>
+
+        <div class="form-row">
+          <label class="form-label">Оборудование</label>
+          <select class="form-control" name="equipment_type">
+            {% for code, title in equipment %}
+              <option value="{{ code }}" {% if code == item.equipment_type %}selected{% endif %}>{{ code }} — {{ title }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-row"><label class="form-label">Тех. параметры</label><textarea class="form-control" name="equipment_params">{{ item.equipment_params }}</textarea></div>
+        <div class="form-row"><label class="form-label">Количество</label><input class="form-control" name="quantity" type="number" value="{{ item.quantity }}"></div>
+        <div class="form-row"><label class="form-label">Стоимость</label><input class="form-control" name="price" type="number" step="0.01" value="{{ item.price or '' }}"></div>
+        <div class="form-row"><div style="margin-left:auto"><button class="btn" type="submit">Сохранить</button></div></div>
+      </form>
+    </div>
+  {% endif %}
+
+  <h3>Действия</h3>
+  <div class="card">
+    {% if user and user.role in ['manager','admin'] %}
+      <form method="post" action="/requests/{{ item.id }}/assign" class="form-row">
+        <label class="form-label">Назначить инженера</label>
+        <select class="form-control" name="engineer_id">
+          <option value="">--</option>
+          {% for e in engineers %}
+            <option value="{{ e.id }}" {% if item.assigned_to and item.assigned_to.id == e.id %}selected{% endif %}>{{ e.name }} ({{ e.username }})</option>
+          {% endfor %}
+        </select>
+        <div style="margin-left:auto"><button class="btn" type="submit">Назначить</button></div>
+      </form>
+    {% endif %}
+
+    <form method="post" action="/requests/{{ item.id }}/status" class="form-row">
+      <label class="form-label">Сменить статус</label>
+      <select class="form-control" name="status">
+        {% for s in statuses %}
+          <option value="{{ s }}" {% if s == item.status %}selected{% endif %}>{{ s }}</option>
+        {% endfor %}
+      </select>
+      <div style="margin-left:auto"><button class="btn" type="submit">Применить</button></div>
+    </form>
+  </div>
+
+  <h3>Комментарии</h3>
+  <div class="card">
+    <ul>
+      {% for c in item.comments %}
+        <li>{{ c.created_at.strftime('%Y-%m-%d %H:%M') }} — <strong>{{ c.author }}</strong>: {{ c.text }}</li>
+      {% endfor %}
+    </ul>
+    {% if user and user.role in ['engineer','admin'] %}
+      <form method="post" action="/requests/{{ item.id }}/comment" class="form-row">
+        <textarea class="form-control" name="text" required></textarea>
+        <div style="margin-left:auto"><button class="btn" type="submit">Добавить комментарий</button></div>
+      </form>
+    {% endif %}
+  </div>
+
+  <h3>История</h3>
+  <div class="card">
+    <ul>
+      {% for h in item.history %}
+        <li>{{ h.created_at.strftime('%Y-%m-%d %H:%M') }} — {{ h.author }}: {{ h.action }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

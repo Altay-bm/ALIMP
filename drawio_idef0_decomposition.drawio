@@ -1,0 +1,36 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Decomposition IDEF0">
+    <mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Block 1 -->
+        <mxCell id="b1" value="1. Приём и регистрация заявки\n(Менеджер)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#3B82F6;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="220" height="100" as="geometry"/>
+        </mxCell>
+        <!-- Block 2 -->
+        <mxCell id="b2" value="2. Техническая проверка и согласование\n(Инженер)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;" vertex="1" parent="1">
+          <mxGeometry x="340" y="120" width="260" height="100" as="geometry"/>
+        </mxCell>
+        <!-- Block 3 -->
+        <mxCell id="b3" value="3. Формирование коммерческого предложения\n(Менеджер)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#10B981;" vertex="1" parent="1">
+          <mxGeometry x="640" y="120" width="260" height="100" as="geometry"/>
+        </mxCell>
+        <!-- Block 4 -->
+        <mxCell id="b4" value="4. Отгрузка и закрытие\n(Менеджер)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF1F2;strokeColor=#EF4444;" vertex="1" parent="1">
+          <mxGeometry x="920" y="120" width="220" height="100" as="geometry"/>
+        </mxCell>
+        <!-- Arrows between blocks -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="b1" target="b2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="b2" target="b3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="b3" target="b4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

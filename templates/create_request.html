@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Создать новую заявку</h2>
+  <div class="card">
+    <form class="form-grid" method="post" action="/requests/create">
+      <div class="form-row"><label class="form-label">Клиент (название)</label><input class="form-control" name="client_name" required></div>
+      <div class="form-row"><label class="form-label">Контактное лицо</label><input class="form-control" name="client_contact"></div>
+      <div class="form-row"><label class="form-label">Телефон</label><input class="form-control phone" name="client_phone" placeholder="8 (___) ___-__-__" maxlength="18"></div>
+      <div class="form-row"><label class="form-label">Email</label><input class="form-control" name="client_email" type="email"></div>
+
+      <div class="form-row">
+        <label class="form-label">Оборудование</label>
+        <select class="form-control" name="equipment_type">
+          {% for code, title in equipment %}
+            <option value="{{ code }}">{{ code }} — {{ title }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Технические параметры</label>
+        <textarea class="form-control" name="equipment_params"></textarea>
+      </div>
+
+      <div class="form-row"><label class="form-label">Количество</label><input class="form-control" name="quantity" type="number" value="1"></div>
+
+      <div class="form-row"><div style="margin-left:auto"><button class="btn" type="submit">Создать</button></div></div>
+    </form>
+  </div>
+{% endblock %}

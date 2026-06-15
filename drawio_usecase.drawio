@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Use Case">
+    <mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Actors -->
+        <mxCell id="actor1" value="Менеджер" style="shape=umlActor;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="100" width="40" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="actor2" value="Инженер" style="shape=umlActor;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="40" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="actor3" value="Администратор" style="shape=umlActor;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="380" width="40" height="80" as="geometry"/>
+        </mxCell>
+        <!-- Use cases -->
+        <mxCell id="uc1" value="Войти в систему" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="220" y="80" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc2" value="Создать заявку" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#1A73E8;" vertex="1" parent="1">
+          <mxGeometry x="220" y="160" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc3" value="Закрыть заявку" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#1A73E8;" vertex="1" parent="1">
+          <mxGeometry x="420" y="160" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc4" value="Взять заявку в работу" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;" vertex="1" parent="1">
+          <mxGeometry x="220" y="260" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc5" value="Перевести в статус 'Выполнено'" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;" vertex="1" parent="1">
+          <mxGeometry x="460" y="260" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc6" value="Добавить комментарий" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#10B981;" vertex="1" parent="1">
+          <mxGeometry x="220" y="360" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc7" value="Просмотреть список заявок" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="220" y="440" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc8" value="Просмотреть историю заявки" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="460" y="440" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc9" value="Управлять сотрудниками" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFF1F2;strokeColor=#EF4444;" vertex="1" parent="1">
+          <mxGeometry x="220" y="520" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc10" value="Сменить пароль сотруднику" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFF1F2;strokeColor=#EF4444;" vertex="1" parent="1">
+          <mxGeometry x="460" y="520" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc11" value="Удалить сотрудника" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFF1F2;strokeColor=#EF4444;" vertex="1" parent="1">
+          <mxGeometry x="340" y="600" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <!-- Connections: actors to use cases -->
+        <mxCell id="c1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="actor1" target="uc2"/>
+        <mxCell id="c2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="actor1" target="uc3"/>
+        <mxCell id="c3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="actor2" target="uc4"/>
+        <mxCell id="c4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="actor2" target="uc5"/>
+        <mxCell id="c5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="actor2" target="uc6"/>
+        <mxCell id="c6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="actor3" target="uc9"/>
+        <mxCell id="c7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="actor3" target="uc10"/>
+        <mxCell id="c8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="actor3" target="uc11"/>
+        <!-- extends relationships (dashed edges) -->
+        <mxCell id="ext1" style="dashed=1;endArrow=open;html=1;" edge="1" parent="1" source="uc2" target="uc1"/>
+        <mxCell id="ext2" style="dashed=1;endArrow=open;html=1;" edge="1" parent="1" source="uc3" target="uc1"/>
+        <mxCell id="ext3" style="dashed=1;endArrow=open;html=1;" edge="1" parent="1" source="uc4" target="uc1"/>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,43 @@
+:root{
+  --bg:#f6f8fa; --card:#ffffff; --accent:#0b5fff; --muted:#6b7280; --accent-2:#0b8cff;
+  --radius:10px; --max-width:1100px; --gap:16px;
+}
+*{box-sizing:border-box}
+body{font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; background:var(--bg); color:#111}
+.container{max-width:var(--max-width); margin:24px auto; padding:0 16px}
+.site-header{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; padding:18px 0}
+.header-row{display:flex; align-items:center; justify-content:space-between}
+.brand h1{margin:0; font-size:20px; letter-spacing:0.6px}
+.brand .tag{margin:0; font-size:12px; color:rgba(255,255,255,0.9)}
+.main-nav{display:flex; gap:12px}
+.nav-link{color:rgba(255,255,255,0.95); text-decoration:none; padding:8px 12px; border-radius:8px; font-weight:600}
+.nav-link:hover{background:rgba(255,255,255,0.08)}
+.nav-link.active{background:rgba(255,255,255,0.15); box-shadow:inset 0 -1px 0 rgba(255,255,255,0.04)}
+.user-info{background:rgba(255,255,255,0.06); padding:8px 10px; border-radius:8px; text-align:right}
+.user-info .user-name{font-weight:700}
+.user-info .user-role{font-size:12px; color:rgba(255,255,255,0.9)}
+.main{padding:20px 0}
+.card{background:var(--card); border-radius:var(--radius); padding:18px; box-shadow:0 6px 16px rgba(12,15,30,0.06); margin-bottom:16px}
+.filters{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+button, .btn{background:var(--accent); color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer}
+button.secondary, .btn.secondary{background:#eef2ff; color:var(--accent)}
+table{width:100%; border-collapse:collapse; background:var(--card); border-radius:8px; overflow:hidden}
+th,td{padding:12px 14px; text-align:left}
+tr:nth-child(even){background:rgba(15,23,42,0.02)}
+th{background:linear-gradient(180deg,#f7f9fc,#ffffff); font-weight:700}
+.form-row{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:12px}
+.form-grid{display:flex; flex-direction:column}
+.form-label{width:180px; min-width:120px; color:var(--muted); font-weight:600}
+.form-control{flex:1; padding:10px 12px; border:1px solid #e6e9ef; border-radius:8px; background:#fff}
+textarea.form-control{min-height:120px}
+input[type=text], input[type=email], input[type=number], select{padding:10px 12px; border-radius:8px}
+.error{color:#d04545}
+.site-footer{padding:18px 0; color:var(--muted)}
+.flash{background:#fffbe6; border-left:4px solid #ffd42a; padding:12px; border-radius:6px; margin-bottom:12px}
+/* Login specific */
+.login-wrapper{display:flex; align-items:center; justify-content:center; min-height:60vh}
+.login-card{width:420px; max-width:95%;}
+input.form-control:focus, textarea.form-control:focus, select.form-control:focus{outline:none; box-shadow:0 6px 18px rgba(11,95,255,0.12); border-color:var(--accent)}
+.btn:active{transform:translateY(1px)}
+@media(max-width:900px){.form-label{width:120px}}
+@media(max-width:720px){.header-row{flex-direction:column; align-items:flex-start; gap:8px}.main-nav{flex-wrap:wrap}.form-row{flex-direction:column; align-items:stretch}.form-label{width:100%}}

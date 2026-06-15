@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>АЛИМП — Система заявок</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-row">
+      <div class="brand">
+        <h1>АЛИМП</h1>
+        <p class="tag">Управление заявками РЗА</p>
+      </div>
+      <div style="display:flex; align-items:center; gap:16px;">
+        <nav class="main-nav">
+          <a class="nav-link" href="/requests">Заявки</a>
+          <a class="nav-link" href="/reports">Отчёты</a>
+          {% if user %}
+            {% if user.role == 'admin' %}<a class="nav-link" href="/users">Пользователи</a>{% endif %}
+            <a class="nav-link" href="/logout">Выход</a>
+          {% else %}
+            <a class="nav-link" href="/login">Вход</a>
+          {% endif %}
+        </nav>
+        {% if user %}
+          <div class="user-info">
+            <div class="user-name">{{ user.name }}</div>
+            <div class="user-role">{{ user.role }}</div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+  <main class="container">
+    {% if request.session.get('flash') %}
+      <div class="flash">{{ request.session.pop('flash') }}</div>
+    {% endif %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <small>© НПП "АЛИМП" — внутренняя система</small>
+    </div>
+  </footer>
+
+  <script src="/static/js/phone_mask.js"></script>
+</body>
+</html>

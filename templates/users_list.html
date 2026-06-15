@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Пользователи</h2>
+  <table>
+    <tr><th>Имя</th><th>Логин</th><th>Роль</th><th>Действия</th></tr>
+    {% for u in items %}
+      <tr>
+        <td>{{ u.name }}</td>
+        <td>{{ u.username }}</td>
+        <td>{{ u.role }}</td>
+        <td>
+          <form method="post" action="/users/{{ u.id }}/delete" style="display:inline"><button>Удалить</button></form>
+          <form method="post" action="/users/{{ u.id }}/reset" style="display:inline">
+            <input name="new_password" placeholder="Новый пароль">
+            <button>Сбросить</button>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+  <h3>Добавить пользователя</h3>
+  <form method="post" action="/users/create">
+    <input name="name" placeholder="Имя" required>
+    <input name="username" placeholder="Логин" required>
+    <input name="password" placeholder="Пароль" required>
+    <select name="role">
+      <option value="manager">manager</option>
+      <option value="engineer">engineer</option>
+      <option value="admin">admin</option>
+    </select>
+    <button type="submit">Создать</button>
+  </form>
+{% endblock %}
