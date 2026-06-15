@@ -25,50 +25,51 @@
 
 ER-диаграмма (Mermaid)
 ```mermaid
-erDiagram
-    USERS {
-        INTEGER id PK
-        VARCHAR name
-        VARCHAR username
-        VARCHAR password_hash
-        VARCHAR role
-    }
-    REQUESTS {
-        INTEGER id PK
-        VARCHAR number
-        DATETIME created_at
-        VARCHAR client_name
-        VARCHAR contact_person
-        VARCHAR phone
-        VARCHAR email
-        VARCHAR equipment_type
-        TEXT technical_params
-        INTEGER quantity
-        VARCHAR status
-        DECIMAL cost
-        INTEGER assigned_to_id FK
-        INTEGER created_by_id FK
-    }
-    COMMENTS {
-        INTEGER id PK
-        TEXT text
-        INTEGER author_id FK
-        DATETIME created_at
-        INTEGER request_id FK
-    }
-    HISTORY {
-        INTEGER id PK
-        INTEGER request_id FK
-        INTEGER author_id FK
-        VARCHAR action
-        DATETIME created_at
-    }
+classDiagram
+  class Users {
+    +int id PK
+    +string name
+    +string username
+    +string password_hash
+    +string role
+  }
+  class Requests {
+    +int id PK
+    +string number
+    +datetime created_at
+    +string client_name
+    +string contact_person
+    +string phone
+    +string email
+    +string equipment_type
+    +text technical_params
+    +int quantity
+    +string status
+    +decimal cost
+    +int assigned_to_id FK
+    +int created_by_id FK
+  }
+  class Comments {
+    +int id PK
+    +text text
+    +int author_id FK
+    +datetime created_at
+    +int request_id FK
+  }
+  class History {
+    +int id PK
+    +int request_id FK
+    +int author_id FK
+    +string action
+    +datetime created_at
+  }
 
-    USERS ||--o{ REQUESTS : creates
-    REQUESTS ||--o{ COMMENTS : has
-    REQUESTS ||--o{ HISTORY : logs
-    USERS ||--o{ COMMENTS : authors
+  Users "1" -- "0..*" Requests : creates
+  Requests "1" -- "0..*" Comments : has
+  Requests "1" -- "0..*" History : logs
+  Users "1" -- "0..*" Comments : authors
 ```
+
 
 Структура проекта (важные файлы)
 - main.py — точка входа приложения
