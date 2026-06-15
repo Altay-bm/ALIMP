@@ -81,17 +81,29 @@ erDiagram
 - requirements.txt
 - .gitignore
 
-Запуск локально
-1. Клонировать репозиторий
-   git clone https://github.com/ВАШ_ЛОГИН/ALIMP.git
-2. Создать виртуальное окружение
-   python -m venv .venv
-   .\.venv\Scripts\activate
-3. Установить зависимости
-   pip install -r requirements.txt
-4. Запустить
-   set SECRET_KEY=replace_with_secret
-   uvicorn main:app --reload
+Запуск локально (Windows, PowerShell)
+
+1) Перейти в папку проекта:
+```
+cd "C:\Users\Vlad\Desktop\ALIMP"
+```
+2) Создать и активировать виртуальное окружение:
+```
+python -m venv .venv
+.\\.venv\\Scripts\\Activate
+```
+3) Установить зависимости:
+```
+pip install -r requirements.txt
+```
+4) Запустить приложение:
+```
+uvicorn main:app --reload --host 127.0.0.1 --port 8000
+```
+
+Доступ: http://127.0.0.1:8000
+
+Тестовые учётки: manager/man123, engineer/eng123, admin/admin123
 
 Примечания
 - Измените SECRET_KEY и пароли перед публикацией.
